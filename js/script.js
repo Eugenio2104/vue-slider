@@ -38,14 +38,15 @@ createApp({
     }
   },
   methods: {
-    next() {
-      console.log('cliccato next');
-      this.counterImage++;
-    },
-    prev() {
-      console.log('cliccato next');
-      this.counterImage--;
-    },
+   nextPrev(isNext){
+    isNext ? this.counterImage++ : this.counterImage--;
+    
+    if(this.counterImage === this.items.url.length){
+      this.counterImage = 0;
+    }else if(this.counterImage < 0){
+      this.counterImage = this.items.url.length -1 
+    }
+   }
   }
 }).mount(`#app`);
 
